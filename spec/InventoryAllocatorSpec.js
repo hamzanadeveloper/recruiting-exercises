@@ -73,7 +73,7 @@ describe("Inventory Allocator", () => {
     })
   });
 
-  // Test 5: If the order can be only partially fulfilled, return an empty shipment order.
+  // Test 5: If the order can be only partially fulfilled, fulfill the order as best as possible.
   describe("If the order can be only partially fulfilled", () => {
     it("return an empty shipment order", () => {
       const order = { apple: 10, oranges: 5, grapefruit: 21 };
@@ -82,7 +82,8 @@ describe("Inventory Allocator", () => {
         { name: "dm", inventory: { apple: 10, grapefruit: 1 } }
       ];
       const inventoryAllocation = new InventoryAllocator(order, warehouses);
-      expect(inventoryAllocation.getCheapestShipment()).toEqual([]);
+      expect(inventoryAllocation.getCheapestShipment()).toEqual([{ "owd": { oranges: 5, grapefruit: 19 }},
+        { "dm": { apple: 10, grapefruit: 1 }}]);
     });
   });
 

@@ -29,12 +29,7 @@ class InventoryAllocator {
       if(!InventoryAllocator.isEmptyShipment(shipment[warehouse_name])) shipments.push(shipment);
     }
 
-    if(InventoryAllocator.isOrderFulfilled(this.order)) return shipments;
-    else return [];
-  }
-
-  static isOrderFulfilled(orders) {
-    return Object.keys(orders).every(item => orders[item] === 0);
+    return shipments;
   }
 
   static isEmptyShipment(shipment) {
