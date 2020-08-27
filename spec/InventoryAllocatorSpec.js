@@ -75,7 +75,7 @@ describe("Inventory Allocator", () => {
 
   // Test 5: If the order can be only partially fulfilled, fulfill the order as best as possible.
   describe("If the order can be only partially fulfilled", () => {
-    it("return an empty shipment order", () => {
+    it("return a partially fulfilled order, as cheap as possible", () => {
       const order = { apple: 10, oranges: 5, grapefruit: 21 };
       const warehouses = [
         { name: "owd", inventory: { oranges: 5, grapefruit: 19 } },
